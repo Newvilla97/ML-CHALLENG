@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import DetalleProducto from "../detalleProducto/DetalleProducto";
 import Producto from "../producto/Producto";
 import "./Productos.css";
+
 const Productos = () => {
   return (
     <Fragment>
@@ -11,11 +12,10 @@ const Productos = () => {
         </div>
 
         <div className="containerProductos">
-          {/* <Producto />
           <Producto />
           <Producto />
-          <Producto /> */}
-          <DetalleProducto />
+          <Producto />
+          <Producto />
         </div>
       </div>
     </Fragment>

@@ -1,11 +1,16 @@
 import React, { Fragment } from "react";
 import ipad1 from "../../imagenes/ipad1.jpg";
 import "./Producto.css";
+import { useNavigate } from "react-router-dom";
 const Producto = () => {
+  const history = useNavigate();
   return (
     <Fragment>
       <div className="containerProducto">
-        <button onClick={() => alert("hola")} className="botonProducto">
+        <button
+          onClick={() => history("/detalle-producto")}
+          className="botonProducto"
+        >
           <img className="imagenProducto" src={ipad1} alt="logo" />
         </button>
         <div className="descripcionProducto">
