@@ -5,7 +5,9 @@ const Producto = () => {
   return (
     <Fragment>
       <div className="containerProducto">
-        <img className="imagenProducto" src={ipad1} alt="logo" />
+        <button onClick={() => alert("hola")} className="botonProducto">
+          <img className="imagenProducto" src={ipad1} alt="logo" />
+        </button>
         <div className="descripcionProducto">
           <div>$ 1.980</div>
           <div>
