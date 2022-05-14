@@ -9,8 +9,8 @@
 
 .inputBuscador{
     display: flex;
-    width: 500px;
-    height: 20px;
+    width: 800px;
+    height: 30px;
 }
 
 .imagen-logo{
@@ -26,9 +26,10 @@
 }
 
 .botonLupa{
-    left: -30px;
-    height: 26px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #eee;
+    border: none;
 }

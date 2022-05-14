@@ -8,12 +8,14 @@ const Buscador = () => {
     <Fragment>
       <div className="containerBuscador">
         <img className="imagen-logo" src={logoMl} alt="logo" />
-
         <input
-          className="inputBuscador"
-          placeholder="Nunca dejes de buscar"
+          type="text"
+          className="form-control inputBuscador"
+          placeholder="Buscar...."
+          aria-label="Buscar...."
+          aria-describedby="basic-addon2"
         ></input>
-        <button className="botonLupa">
+        <button className="btn btn-outline-secondary botonLupa" type="button">
           <img className="lupa-logo" src={lupa} alt="logo" />
         </button>
       </div>

@@ -4,8 +4,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 600px;
+    height: 100%;
     background-color: #eee;
+   
 }
 
 .containerProductos{
@@ -14,9 +15,17 @@
     
     width: 100%;
     height: 100%;
-    max-width: 600px;
-    max-height: 500px;
+    max-width: 900px;
+    max-height: 1200px;
     background-color: white;
-    border-radius: 5px
+    border-radius: 5px;
+  
 
+}
+.navProductos{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 900px;
+    margin: 10px 0;
 }
