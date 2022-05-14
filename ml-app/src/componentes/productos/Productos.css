@@ -1,0 +1,22 @@
+.principalContainerProductos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 600px;
+    background-color: #eee;
+}
+
+.containerProductos{
+    display: flex;
+    flex-direction:column;
+    
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 500px;
+    background-color: white;
+    border-radius: 5px
+
+}
