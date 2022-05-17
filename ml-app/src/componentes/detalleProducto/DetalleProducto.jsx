@@ -1,18 +1,21 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./DetalleProducto.css";
 import { useProductDetails } from "../../context/ProductDetailsContext";
-import Spinner from "react-bootstrap/Spinner";
+import axios from "axios";
+
 const DetalleProducto = () => {
-  const { productDetail } = useProductDetails();
-  const [viewDetail, setViewDetail] = useState(true);
+  const [productDetail, setProductDetail] = useState();
+  const { idProduct } = useProductDetails();
+
   useEffect(() => {
-    setTimeout(function () {
-      setViewDetail(!viewDetail);
-    }, 400);
-  }, [productDetail]);
+    axios.get(`https://api.mercadolibre.com/items/${idProduct}`).then((res) => {
+      const data = res.data;
+      setProductDetail(data);
+    });
+  }, [idProduct]);
   return (
     <Fragment>
-      {productDetail && !viewDetail ? (
+      {productDetail ? (
         <div className="principalContainerProductos">
           <div className="breadcrumb-item active navProductos">
             {

@@ -3,11 +3,11 @@ import Buscador from "./componentes/buscador/Buscador";
 import Productos from "./componentes/productos/Productos";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DetalleProducto from "./componentes/detalleProducto/DetalleProducto";
-import { ProductosProvider } from "./context/ProductosContext";
+import { SearchProvider } from "./context/SearchContext";
 import { ProductDetailsProvider } from "./context/ProductDetailsContext";
 function App() {
   return (
-    <ProductosProvider>
+    <SearchProvider>
       <ProductDetailsProvider>
         <BrowserRouter>
           <Buscador />
@@ -20,7 +20,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </ProductDetailsProvider>
-    </ProductosProvider>
+    </SearchProvider>
   );
 }
 

@@ -3,10 +3,10 @@ import "./Buscador.css";
 import logoMl from "../../imagenes/logoMl.png";
 import lupa from "../../imagenes/lupa.png";
 import { useNavigate } from "react-router-dom";
-import { useProductos } from "../../context/ProductosContext";
+import { useSearch } from "../../context/SearchContext";
 
 const Buscador = () => {
-  const { setSearchProduct } = useProductos();
+  const { setSearchProduct } = useSearch();
   const [searchProduct, setSerachProduct] = useState();
   const history = useNavigate();
   return (

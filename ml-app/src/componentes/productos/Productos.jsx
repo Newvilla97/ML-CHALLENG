@@ -1,25 +1,30 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Producto from "../producto/Producto";
 import "./Productos.css";
-import { useProductos } from "../../context/ProductosContext";
-
+import axios from "axios";
+import { useSearch } from "../../context/SearchContext";
 const Productos = () => {
+  const { searchProduct } = useSearch();
+  const [productos, setProductos] = useState();
   const [listaProductos, setListaProductos] = useState([]);
-  const { productos } = useProductos();
-  const [viewProducts, setViewProducts] = useState(false);
+  useEffect(() => {
+    axios
+      .get(`https://api.mercadolibre.com/sites/MLA/search?q=:${searchProduct}`)
+      .then((res) => {
+        const data = res.data;
+        setProductos(data.results);
+      });
+  }, [searchProduct]);
 
   useEffect(() => {
     if (productos) {
       setListaProductos(productos.slice(0, 4));
-      setTimeout(function () {
-        setViewProducts(true);
-      }, 400);
     }
   }, [productos]);
 
   return (
     <Fragment>
-      {listaProductos && viewProducts ? (
+      {listaProductos ? (
         <div className="principalContainerProductos">
           <div className="breadcrumb-item active navProductos">
             {
