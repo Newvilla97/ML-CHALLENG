@@ -1,4 +1,4 @@
-.containerBuscador{
+.containerSearch{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +13,7 @@
     height: 30px;
 }
 
-.imagen-logo{
+.img-logo{
     display: flex;
     width: 40px;
     height: 30px;
@@ -25,7 +25,7 @@
     height: 17px;
 }
 
-.botonLupa{
+.btnLupa{
     height: 30px;
     display: flex;
     justify-content: center;

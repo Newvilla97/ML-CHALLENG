@@ -1,40 +1,40 @@
 import React, { Fragment, useEffect, useState } from "react";
-import Producto from "../producto/Producto";
-import "./Productos.css";
+import Product from "../product/Product";
+import "./Products.css";
 import axios from "axios";
 import { useSearch } from "../../context/SearchContext";
-const Productos = () => {
+const Products = () => {
   const { searchProduct } = useSearch();
-  const [productos, setProductos] = useState();
-  const [listaProductos, setListaProductos] = useState([]);
+  const [products, setProducts] = useState();
+  const [listProducts, setListProducts] = useState([]);
   useEffect(() => {
     axios
       .get(`https://api.mercadolibre.com/sites/MLA/search?q=:${searchProduct}`)
       .then((res) => {
         const data = res.data;
-        setProductos(data.results);
+        setProducts(data.results);
       });
   }, [searchProduct]);
 
   useEffect(() => {
-    if (productos) {
-      setListaProductos(productos.slice(0, 4));
+    if (products) {
+      setListProducts(products.slice(0, 4));
     }
-  }, [productos]);
+  }, [products]);
 
   return (
     <Fragment>
-      {listaProductos ? (
-        <div className="principalContainerProductos">
-          <div className="breadcrumb-item active navProductos">
+      {listProducts ? (
+        <div className="principal-container-products">
+          <div className="breadcrumb-item active nav-products">
             {
               "Electronica, Audio y Video > Ipod > Reproductores Ipod Tuch > 32GB"
             }
           </div>
 
-          <div className="containerProductos">
-            {listaProductos.map((p) => (
-              <Producto data={p} />
+          <div className="container-products">
+            {listProducts.map((p) => (
+              <Product data={p} />
             ))}
           </div>
         </div>
@@ -42,4 +42,4 @@ const Productos = () => {
     </Fragment>
   );
 };
-export default Productos;
+export default Products;

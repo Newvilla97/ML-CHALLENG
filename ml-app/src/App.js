@@ -1,8 +1,8 @@
 import React from "react";
-import Buscador from "./componentes/buscador/Buscador";
-import Productos from "./componentes/productos/Productos";
+import Buscador from "./componentes/search/Search";
+import Products from "./componentes/products/Products";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DetalleProducto from "./componentes/detalleProducto/DetalleProducto";
+import ProductDetail from "./componentes/productDetail/ProductDetail";
 import { SearchProvider } from "./context/SearchContext";
 import { ProductDetailsProvider } from "./context/ProductDetailsContext";
 function App() {
@@ -12,11 +12,8 @@ function App() {
         <BrowserRouter>
           <Buscador />
           <Routes>
-            <Route path="/" element={<Productos />}></Route>
-            <Route
-              path="/detalle-producto"
-              element={<DetalleProducto />}
-            ></Route>
+            <Route path="/" element={<Products />}></Route>
+            <Route path="/detalle-producto" element={<ProductDetail />}></Route>
           </Routes>
         </BrowserRouter>
       </ProductDetailsProvider>

@@ -1,24 +1,24 @@
 import React, { Fragment } from "react";
-import "./Producto.css";
+import "./Product.css";
 import { useNavigate } from "react-router-dom";
-import shippingLogo from "../../imagenes/ic_shipping.png";
+import shippingLogo from "../../img/ic_shipping.png";
 import { useProductDetails } from "../../context/ProductDetailsContext";
-const Producto = ({ data }) => {
+const Product = ({ data }) => {
   const { setIdProduct } = useProductDetails();
   const history = useNavigate();
   return (
     <Fragment>
-      <div className="containerProducto">
+      <div className="container-product">
         <button
           onClick={() => {
             history(`/detalle-producto`);
             setIdProduct(data.id);
           }}
-          className="botonProducto"
+          className="button-product"
         >
-          <img className="imagenProducto" src={data.thumbnail} alt="logo" />
+          <img className="img-product" src={data.thumbnail} alt="logo" />
         </button>
-        <div className="descripcionProducto">
+        <div className="description-product">
           <div>
             {Intl.NumberFormat("es-AR", {
               style: "currency",
@@ -30,11 +30,11 @@ const Producto = ({ data }) => {
           </div>
           <div>{data.title}</div>
         </div>
-        <div className="breadcrumb-item active ubicacionProducto">
+        <div className="breadcrumb-item active ubication-product">
           capital federal
         </div>
       </div>
     </Fragment>
   );
 };
-export default Producto;
+export default Product;

@@ -1,18 +1,18 @@
 import React, { Fragment, useState } from "react";
-import "./Buscador.css";
-import logoMl from "../../imagenes/logoMl.png";
-import lupa from "../../imagenes/lupa.png";
+import "./Search.css";
+import logoMl from "../../img/logoMl.png";
+import lupa from "../../img/lupa.png";
 import { useNavigate } from "react-router-dom";
 import { useSearch } from "../../context/SearchContext";
 
-const Buscador = () => {
+const Search = () => {
   const { setSearchProduct } = useSearch();
   const [searchProduct, setSerachProduct] = useState();
   const history = useNavigate();
   return (
     <Fragment>
-      <div className="containerBuscador">
-        <img className="imagen-logo" src={logoMl} alt="logo" />
+      <div className="containerSearch">
+        <img className="img-logo" src={logoMl} alt="logo" />
         <input
           type="text"
           className="form-control inputBuscador"
@@ -22,7 +22,7 @@ const Buscador = () => {
           onChange={(e) => setSerachProduct(e.target.value)}
         ></input>
         <button
-          className="btn btn-outline-secondary botonLupa"
+          className="btn btn-outline-secondary btnLupa"
           type="button"
           onClick={() => {
             setSearchProduct(searchProduct);
@@ -36,4 +36,4 @@ const Buscador = () => {
   );
 };
 
-export default Buscador;
+export default Search;

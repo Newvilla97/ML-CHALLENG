@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
-import "./DetalleProducto.css";
+import "./ProductDetail.css";
 import { useProductDetails } from "../../context/ProductDetailsContext";
 import axios from "axios";
 
-const DetalleProducto = () => {
+const ProductDetail = () => {
   const [productDetail, setProductDetail] = useState();
   const { idProduct } = useProductDetails();
 
@@ -16,21 +16,21 @@ const DetalleProducto = () => {
   return (
     <Fragment>
       {productDetail ? (
-        <div className="principalContainerProductos">
-          <div className="breadcrumb-item active navProductos">
+        <div className="principal-container-products">
+          <div className="breadcrumb-item active nav-products">
             {
               "Electronica, Audio y Video > Ipod > Reproductores Ipod Tuch > 32GB"
             }
           </div>
 
-          <div className="containerProductos">
-            <div className="containerDetalles">
+          <div className="container-products">
+            <div className="container-details">
               <img
-                className="imagenDetalleProducto"
+                className="img-details-product"
                 src={productDetail.thumbnail}
                 alt="logo"
               />
-              <div className="detallesProducto">
+              <div className="details-product">
                 <div>
                   {productDetail.condition === "new" ? "Nuevo" : "Usado"} -{" "}
                   {productDetail.sold_quantity + " Vendidos"}
@@ -42,12 +42,12 @@ const DetalleProducto = () => {
                     currency: productDetail.currency_id,
                   }).format(productDetail.price)}
                 </div>
-                <button className="botonComprar">Comprar</button>
+                <button className="button-buy">Comprar</button>
               </div>
             </div>
-            <div className="detalleDescripcion">
-              <div className="tituloDescripcion">Descripcion del Producto</div>
-              <div className="DescripcionTexto">
+            <div className="details-description">
+              <div className="title-description">Descripcion del Producto</div>
+              <div className="description-text">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
                 quo, quia inventore labore suscipit voluptatibus tempora dolor
                 omnis, debitis doloremque ullam quisquam eaque laboriosam? Esse
@@ -60,4 +60,4 @@ const DetalleProducto = () => {
     </Fragment>
   );
 };
-export default DetalleProducto;
+export default ProductDetail;
