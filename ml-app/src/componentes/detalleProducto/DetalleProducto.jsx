@@ -1,12 +1,18 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "./DetalleProducto.css";
 import { useProductDetails } from "../../context/ProductDetailsContext";
+import Spinner from "react-bootstrap/Spinner";
 const DetalleProducto = () => {
   const { productDetail } = useProductDetails();
-
+  const [viewDetail, setViewDetail] = useState(true);
+  useEffect(() => {
+    setTimeout(function () {
+      setViewDetail(!viewDetail);
+    }, 400);
+  }, [productDetail]);
   return (
     <Fragment>
-      {productDetail ? (
+      {productDetail && !viewDetail ? (
         <div className="principalContainerProductos">
           <div className="breadcrumb-item active navProductos">
             {

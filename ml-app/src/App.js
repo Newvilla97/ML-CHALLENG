@@ -9,8 +9,8 @@ function App() {
   return (
     <ProductosProvider>
       <ProductDetailsProvider>
-        <Buscador />
         <BrowserRouter>
+          <Buscador />
           <Routes>
             <Route path="/" element={<Productos />}></Route>
             <Route
