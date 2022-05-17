@@ -1,14 +1,9 @@
 import React, { Fragment, useEffect } from "react";
-import ipad1 from "../../imagenes/ipad1.jpg";
 import "./DetalleProducto.css";
 import { useProductDetails } from "../../context/ProductDetailsContext";
 const DetalleProducto = () => {
   const { productDetail } = useProductDetails();
-  useEffect(() => {
-    if (productDetail) {
-      console.log(productDetail);
-    }
-  }, []);
+
   return (
     <Fragment>
       {productDetail ? (
