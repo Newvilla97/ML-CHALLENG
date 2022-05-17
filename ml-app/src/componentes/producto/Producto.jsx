@@ -1,23 +1,29 @@
 import React, { Fragment } from "react";
-import ipad1 from "../../imagenes/ipad1.jpg";
 import "./Producto.css";
 import { useNavigate } from "react-router-dom";
-const Producto = () => {
+import shippingLogo from "../../imagenes/ic_shipping.png";
+const Producto = ({ data }) => {
   const history = useNavigate();
   return (
     <Fragment>
       <div className="containerProducto">
         <button
-          onClick={() => history("/detalle-producto")}
+          onClick={() => history(`/detalle-producto/:${data.id}`)}
           className="botonProducto"
         >
-          <img className="imagenProducto" src={ipad1} alt="logo" />
+          <img className="imagenProducto" src={data.thumbnail} alt="logo" />
         </button>
         <div className="descripcionProducto">
-          <div>$ 1.980</div>
           <div>
-            Apple Ipod Touch 5g 16gb negro igual a nuevo completo unico!
+            {Intl.NumberFormat("es-AR", {
+              style: "currency",
+              currency: data.prices.presentation.display_currency,
+            }).format(data.price)}
+            {data.shipping.free_shipping ? (
+              <img className="shipping-logo" src={shippingLogo} alt="logo" />
+            ) : null}
           </div>
+          <div>{data.title}</div>
         </div>
         <div className="breadcrumb-item active ubicacionProducto">
           capital federal

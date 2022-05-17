@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
 import ipad1 from "../../imagenes/ipad1.jpg";
+import { useParams } from "react-router-dom";
 import "./DetalleProducto.css";
 const DetalleProducto = () => {
+  let { id_product } = useParams();
   return (
     <Fragment>
       <div className="principalContainerProductos">
