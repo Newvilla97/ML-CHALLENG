@@ -1,37 +1,58 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import ipad1 from "../../imagenes/ipad1.jpg";
-import { useParams } from "react-router-dom";
 import "./DetalleProducto.css";
+import { useProductDetails } from "../../context/ProductDetailsContext";
 const DetalleProducto = () => {
-  let { id_product } = useParams();
+  const { productDetail } = useProductDetails();
+  useEffect(() => {
+    if (productDetail) {
+      console.log(productDetail);
+    }
+  }, []);
   return (
     <Fragment>
-      <div className="principalContainerProductos">
-        <div className="breadcrumb-item active navProductos">
-          {"Electronica, Audio y Video > Ipod > Reproductores Ipod Tuch > 32GB"}
-        </div>
+      {productDetail ? (
+        <div className="principalContainerProductos">
+          <div className="breadcrumb-item active navProductos">
+            {
+              "Electronica, Audio y Video > Ipod > Reproductores Ipod Tuch > 32GB"
+            }
+          </div>
 
-        <div className="containerProductos">
-          <div className="containerDetalles">
-            <img className="imagenDetalleProducto" src={ipad1} alt="logo" />
-            <div className="detallesProducto">
-              <div>Nuevo - 234 vendidos</div>
-              <div>Deco Reverse Sombreado Oxford</div>
-              <div>$1.980</div>
-              <button className="botonComprar">Comprar</button>
+          <div className="containerProductos">
+            <div className="containerDetalles">
+              <img
+                className="imagenDetalleProducto"
+                src={productDetail.thumbnail}
+                alt="logo"
+              />
+              <div className="detallesProducto">
+                <div>
+                  {productDetail.condition === "new" ? "Nuevo" : "Usado"} -{" "}
+                  {productDetail.sold_quantity + " Vendidos"}
+                </div>
+                <div>{productDetail.title}</div>
+                <div>
+                  {Intl.NumberFormat("es-AR", {
+                    style: "currency",
+                    currency: productDetail.currency_id,
+                  }).format(productDetail.price)}
+                </div>
+                <button className="botonComprar">Comprar</button>
+              </div>
             </div>
-          </div>
-          <div className="detalleDescripcion">
-            <div className="tituloDescripcion">Descripcion del Producto</div>
-            <div className="DescripcionTexto">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-              quo, quia inventore labore suscipit voluptatibus tempora dolor
-              omnis, debitis doloremque ullam quisquam eaque laboriosam? Esse ea
-              eaque deleniti minima quo.
+            <div className="detalleDescripcion">
+              <div className="tituloDescripcion">Descripcion del Producto</div>
+              <div className="DescripcionTexto">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+                quo, quia inventore labore suscipit voluptatibus tempora dolor
+                omnis, debitis doloremque ullam quisquam eaque laboriosam? Esse
+                ea eaque deleniti minima quo.
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : null}
     </Fragment>
   );
 };

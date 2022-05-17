@@ -2,13 +2,18 @@ import React, { Fragment } from "react";
 import "./Producto.css";
 import { useNavigate } from "react-router-dom";
 import shippingLogo from "../../imagenes/ic_shipping.png";
+import { useProductDetails } from "../../context/ProductDetailsContext";
 const Producto = ({ data }) => {
+  const { setIdProduct } = useProductDetails();
   const history = useNavigate();
   return (
     <Fragment>
       <div className="containerProducto">
         <button
-          onClick={() => history(`/detalle-producto/:${data.id}`)}
+          onClick={() => {
+            history(`/detalle-producto`);
+            setIdProduct(data.id);
+          }}
           className="botonProducto"
         >
           <img className="imagenProducto" src={data.thumbnail} alt="logo" />

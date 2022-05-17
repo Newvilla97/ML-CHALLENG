@@ -6,7 +6,7 @@ export function ProductosProvider(props) {
 
   useEffect(() => {
     axios
-      .get(`https://api.mercadolibre.com/sites/MLA/search?q=:query`)
+      .get(`https://api.mercadolibre.com/sites/MLA/search?q=:Teclados`)
       .then((res) => {
         const data = res.data;
         setProductos(data.results);
