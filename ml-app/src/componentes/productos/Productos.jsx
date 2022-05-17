@@ -6,15 +6,20 @@ import { useProductos } from "../../context/ProductosContext";
 const Productos = () => {
   const [listaProductos, setListaProductos] = useState([]);
   const { productos } = useProductos();
+  const [viewProducts, setViewProducts] = useState(false);
+
   useEffect(() => {
     if (productos) {
       setListaProductos(productos.slice(0, 4));
+      setTimeout(function () {
+        setViewProducts(true);
+      }, 400);
     }
   }, [productos]);
 
   return (
     <Fragment>
-      {listaProductos ? (
+      {listaProductos && viewProducts ? (
         <div className="principalContainerProductos">
           <div className="breadcrumb-item active navProductos">
             {
