@@ -1,6 +1,6 @@
 .container-details{
     display: flex;
-
+padding: 0 50px 0 0;
     width: 100%;
     height: 100%;
 
@@ -17,8 +17,8 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    max-width: 150px;
-    margin:20px 10px 0 10px
+    max-width: 250px;
+    margin:20px 10px 0 40px
 }
 
 .button-buy{
@@ -39,4 +39,25 @@
 }
 .description-text{
     margin:20px 0;
+}
+
+.product-condition{
+    width: 250px;
+}
+
+.title-product-detail{
+    color:#333333;
+    font-size: 20px;
+    font-weight:900;
+}
+.price-detail{
+    color:#333333;
+    margin-top: 10px;
+    font-size: 40px;
+    font-weight:400
+}
+.description-product-detail{
+   
+    font-size: 20px;
+    font-weight:500
 }

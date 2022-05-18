@@ -9,28 +9,33 @@ const Search = () => {
   const { setSearchProduct } = useSearch();
   const [searchProduct, setSerachProduct] = useState();
   const history = useNavigate();
+  const onSubmit = (event) => {
+    event.preventDefault();
+    history(`/`);
+    setSearchProduct(searchProduct);
+  };
   return (
     <Fragment>
       <div className="containerSearch">
-        <img className="img-logo" src={logoMl} alt="logo" />
-        <input
-          type="text"
-          className="form-control inputBuscador"
-          placeholder="Buscar...."
-          aria-label="Buscar...."
-          aria-describedby="basic-addon2"
-          onChange={(e) => setSerachProduct(e.target.value)}
-        ></input>
-        <button
-          className="btn btn-outline-secondary btnLupa"
-          type="button"
-          onClick={() => {
-            setSearchProduct(searchProduct);
-            history(`/`);
-          }}
-        >
-          <img className="lupa-logo" src={lupa} alt="logo" />
+        <button className="button-logo" onClick={() => history(`/`)}>
+          <img className="img-logo" src={logoMl} alt="logo" />
         </button>
+
+        <form onSubmit={onSubmit}>
+          <div className="form">
+            <input
+              type="text"
+              className="form-control inputBuscador"
+              placeholder="Buscar...."
+              aria-label="Buscar...."
+              aria-describedby="basic-addon2"
+              onChange={(e) => setSerachProduct(e.target.value)}
+            ></input>
+            <button className="btn btn-outline-secondary btnLupa" type="submit">
+              <img className="lupa-logo" src={lupa} alt="logo" />
+            </button>
+          </div>
+        </form>
       </div>
     </Fragment>
   );

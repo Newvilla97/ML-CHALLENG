@@ -26,10 +26,23 @@
 }
 
 .btnLupa{
-    height: 30px;
+    height: 29px;
+    margin-left: -42px;
+    margin-top: 0.5px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #eee;
     border: none;
+}
+
+.form{
+    display: flex;
+
+}
+.button-logo{
+    width: 50px;
+    background-color: #FFE600;
+    border: none;
+    margin-right: 20px;
 }

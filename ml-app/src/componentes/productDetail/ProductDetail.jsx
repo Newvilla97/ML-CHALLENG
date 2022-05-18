@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import "./ProductDetail.css";
 import { useProductDetails } from "../../context/ProductDetailsContext";
 import axios from "axios";
+import Spinner from "react-bootstrap/Spinner";
 
 const ProductDetail = () => {
   const [productDetail, setProductDetail] = useState();
@@ -31,12 +32,14 @@ const ProductDetail = () => {
                 alt="logo"
               />
               <div className="details-product">
-                <div>
+                <div className="product-condition">
                   {productDetail.condition === "new" ? "Nuevo" : "Usado"} -{" "}
                   {productDetail.sold_quantity + " Vendidos"}
                 </div>
-                <div>{productDetail.title}</div>
-                <div>
+                <div className="title-product-detail">
+                  {productDetail.title}
+                </div>
+                <div className="price-detail">
                   {Intl.NumberFormat("es-AR", {
                     style: "currency",
                     currency: productDetail.currency_id,
@@ -46,7 +49,9 @@ const ProductDetail = () => {
               </div>
             </div>
             <div className="details-description">
-              <div className="title-description">Descripcion del Producto</div>
+              <div className="description-product-detail">
+                Descripcion del Producto
+              </div>
               <div className="description-text">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
                 quo, quia inventore labore suscipit voluptatibus tempora dolor
@@ -56,7 +61,11 @@ const ProductDetail = () => {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <div className="spinner">
+          <Spinner animation="border" />
+        </div>
+      )}
     </Fragment>
   );
 };

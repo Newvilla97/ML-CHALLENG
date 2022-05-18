@@ -19,7 +19,7 @@ const Product = ({ data }) => {
           <img className="img-product" src={data.thumbnail} alt="logo" />
         </button>
         <div className="description-product">
-          <div>
+          <div className="price">
             {Intl.NumberFormat("es-AR", {
               style: "currency",
               currency: data.prices.presentation.display_currency,
@@ -28,10 +28,20 @@ const Product = ({ data }) => {
               <img className="shipping-logo" src={shippingLogo} alt="logo" />
             ) : null}
           </div>
-          <div>{data.title}</div>
+          <div className="title-product">
+            <button
+              className="button-title"
+              onClick={() => {
+                history(`/detalle-producto`);
+                setIdProduct(data.id);
+              }}
+            >
+              {data.title}
+            </button>
+          </div>
         </div>
         <div className="breadcrumb-item active ubication-product">
-          capital federal
+          {data.address.state_name}
         </div>
       </div>
     </Fragment>
