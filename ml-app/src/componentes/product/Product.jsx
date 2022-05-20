@@ -3,7 +3,7 @@ import "./Product.css";
 import { useNavigate } from "react-router-dom";
 import shippingLogo from "../../img/ic_shipping.png";
 import { useProductDetails } from "../../context/ProductDetailsContext";
-const Product = ({ data, categories }) => {
+const Product = ({ data }) => {
   const { setIdProduct } = useProductDetails();
 
   const history = useNavigate();
@@ -42,7 +42,7 @@ const Product = ({ data, categories }) => {
           </div>
         </div>
         <div className="breadcrumb-item active ubication-product">
-          {/*  {data.address.state_name} */}
+          {data.stateName}
         </div>
       </div>
     </Fragment>

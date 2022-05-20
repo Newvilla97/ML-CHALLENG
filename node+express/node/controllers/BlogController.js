@@ -20,6 +20,7 @@ export const getItems = async (req, res) => {
           picture: p.thumbnail,
           condition: p.condition,
           freeShipping: p.shipping.free_shipping,
+          stateName: p.address.state_name,
         },
       ];
     }
