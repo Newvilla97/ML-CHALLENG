@@ -7,13 +7,17 @@ import Spinner from "react-bootstrap/Spinner";
 const ProductDetail = () => {
   const [productDetail, setProductDetail] = useState();
   const { idProduct, categoriesContext } = useProductDetails();
-
+  const [categories, setCategories] = useState();
   useEffect(() => {
     if (idProduct) {
       sessionStorage.setItem("idProducto", idProduct);
     }
-
+    if (categoriesContext) {
+      sessionStorage.setItem("categories", JSON.stringify(categoriesContext));
+    }
+    let categoriesStorage = JSON.parse(sessionStorage.getItem("categories"));
     let idProductStorage = sessionStorage.getItem("idProducto");
+    setCategories(categoriesStorage);
     axios
       .get(`http://localhost:3001/api/id/${idProductStorage}`)
       .then((res) => {
@@ -26,9 +30,9 @@ const ProductDetail = () => {
       {productDetail ? (
         <div className="principal-container-products">
           <div className="breadcrumb-item active nav-products">
-            {categoriesContext &&
-              categoriesContext.length > 0 &&
-              categoriesContext[0].values[0].path_from_root.map((c) => (
+            {categories &&
+              categories.length > 0 &&
+              categories[0].values[0].path_from_root.map((c) => (
                 <div className="categories">
                   {c.name}
                   <div style={{ margin: "0 5px 0 5px" }}>{">"}</div>
