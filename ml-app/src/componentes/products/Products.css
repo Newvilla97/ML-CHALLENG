@@ -39,4 +39,8 @@
     height: 700px;
     background-color: #eee;
 }
-
+.categories{
+    display: flex;
+    justify-content: flex-start;
+    
+}

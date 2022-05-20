@@ -5,10 +5,13 @@ import "./Products.css";
 import axios from "axios";
 import { useSearch } from "../../context/SearchContext";
 import Error from "../error/Error";
+import { useProductDetails } from "../../context/ProductDetailsContext";
 const Products = () => {
   const { searchProduct } = useSearch();
+  const { setCategoriesContext } = useProductDetails();
   const [products, setProducts] = useState();
   const [listProducts, setListProducts] = useState([]);
+  const [categories, setCategories] = useState();
 
   useEffect(() => {
     if (searchProduct && searchProduct.trim() !== "") {
@@ -22,6 +25,8 @@ const Products = () => {
         setProducts([]);
         setListProducts([]);
         setProducts(data.items);
+        setCategories(data.categories);
+        setCategoriesContext(data.categories);
       });
   }, [searchProduct]);
 
@@ -37,9 +42,13 @@ const Products = () => {
       {listProducts.length > 0 ? (
         <div className="principal-container-products">
           <div className="breadcrumb-item active nav-products">
-            {
-              "Electronica, Audio y Video > Ipod > Reproductores Ipod Tuch > 32GB"
-            }
+            {categories.length > 0 &&
+              categories[0].values[0].path_from_root.map((c) => (
+                <div className="categories">
+                  {c.name}
+                  <div style={{ margin: "0 5px 0 5px" }}>{">"}</div>
+                </div>
+              ))}
           </div>
 
           <div className="container-products">

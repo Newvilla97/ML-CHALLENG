@@ -6,7 +6,7 @@ import Spinner from "react-bootstrap/Spinner";
 
 const ProductDetail = () => {
   const [productDetail, setProductDetail] = useState();
-  const { idProduct } = useProductDetails();
+  const { idProduct, categoriesContext } = useProductDetails();
 
   useEffect(() => {
     if (idProduct) {
@@ -26,9 +26,14 @@ const ProductDetail = () => {
       {productDetail ? (
         <div className="principal-container-products">
           <div className="breadcrumb-item active nav-products">
-            {
-              "Electronica, Audio y Video > Ipod > Reproductores Ipod Tuch > 32GB"
-            }
+            {categoriesContext &&
+              categoriesContext.length > 0 &&
+              categoriesContext[0].values[0].path_from_root.map((c) => (
+                <div className="categories">
+                  {c.name}
+                  <div style={{ margin: "0 5px 0 5px" }}>{">"}</div>
+                </div>
+              ))}
           </div>
 
           <div className="container-products">

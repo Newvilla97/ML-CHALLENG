@@ -3,7 +3,7 @@ import "./Product.css";
 import { useNavigate } from "react-router-dom";
 import shippingLogo from "../../img/ic_shipping.png";
 import { useProductDetails } from "../../context/ProductDetailsContext";
-const Product = ({ data }) => {
+const Product = ({ data, categories }) => {
   const { setIdProduct } = useProductDetails();
 
   const history = useNavigate();
