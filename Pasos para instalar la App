@@ -1,4 +1,4 @@
 paso 1: clonar el repositorio abriendo una termina gitBash o powerShell e ingresar el comando: git clonne "url".
 paso 2: abrir el proyecto react en vs code, abrir una terminal (ctrl+ñ) y ejecutar npm install para instalar las dependencias.
 paso 3: ejecutar el proyecto react con el comando npm start.
-paso 4: abrir el proyecto node en vs code, abrir una terminal (ctrl ñ) y ejecutar "node app" para iniciar el servidor o si tiene instalado nodemon "nodemon app".
+paso 4: abrir el proyecto node en vs code, abrir una terminal (ctrl ñ) y ejecutar "node App.js" para iniciar el servidor.
