@@ -8,7 +8,7 @@ const Error = () => {
         <img className="img-error" src={logoLupa} alt="logo"></img>
       </div>
       <div className="text-error">
-        Escribí en el buscador lo que querés encontrar.
+        No hemos podido encontrar este producto :(
       </div>
       <div></div>
     </div>

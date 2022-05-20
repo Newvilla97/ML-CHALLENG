@@ -9,14 +9,19 @@ const Products = () => {
   const { searchProduct } = useSearch();
   const [products, setProducts] = useState();
   const [listProducts, setListProducts] = useState([]);
+
   useEffect(() => {
+    if (searchProduct && searchProduct.trim() !== "") {
+      sessionStorage.setItem("searchProduct", searchProduct);
+    }
+    let searchProductStorage = sessionStorage.getItem("searchProduct");
     axios
-      .get(`https://api.mercadolibre.com/sites/MLA/search?q=:${searchProduct}`)
+      .get(`http://localhost:3001/api/${searchProductStorage}`)
       .then((res) => {
         const data = res.data;
         setProducts([]);
         setListProducts([]);
-        setProducts(data.results);
+        setProducts(data.items);
       });
   }, [searchProduct]);
 

@@ -9,10 +9,17 @@ const ProductDetail = () => {
   const { idProduct } = useProductDetails();
 
   useEffect(() => {
-    axios.get(`https://api.mercadolibre.com/items/${idProduct}`).then((res) => {
-      const data = res.data;
-      setProductDetail(data);
-    });
+    if (idProduct) {
+      sessionStorage.setItem("idProducto", idProduct);
+    }
+
+    let idProductStorage = sessionStorage.getItem("idProducto");
+    axios
+      .get(`http://localhost:3001/api/id/${idProductStorage}`)
+      .then((res) => {
+        const data = res.data;
+        setProductDetail(data);
+      });
   }, [idProduct]);
   return (
     <Fragment>
@@ -28,22 +35,22 @@ const ProductDetail = () => {
             <div className="container-details">
               <img
                 className="img-details-product"
-                src={productDetail.thumbnail}
+                src={productDetail.item.picture}
                 alt="logo"
               />
               <div className="details-product">
                 <div className="product-condition">
-                  {productDetail.condition === "new" ? "Nuevo" : "Usado"} -{" "}
-                  {productDetail.sold_quantity + " Vendidos"}
+                  {productDetail.item.condition === "new" ? "Nuevo" : "Usado"} -{" "}
+                  {productDetail.item.soldQuantity + " Vendidos"}
                 </div>
                 <div className="title-product-detail">
-                  {productDetail.title}
+                  {productDetail.item.title}
                 </div>
                 <div className="price-detail">
                   {Intl.NumberFormat("es-AR", {
                     style: "currency",
-                    currency: productDetail.currency_id,
-                  }).format(productDetail.price)}
+                    currency: productDetail.item.price.currency,
+                  }).format(productDetail.item.price.amount)}
                 </div>
                 <button className="button-buy">Comprar</button>
               </div>

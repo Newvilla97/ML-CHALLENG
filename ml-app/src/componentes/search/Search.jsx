@@ -31,7 +31,11 @@ const Search = () => {
               aria-describedby="basic-addon2"
               onChange={(e) => setSerachProduct(e.target.value)}
             ></input>
-            <button className="btn btn-outline-secondary btnLupa" type="submit">
+            <button
+              className="btn btn-outline-secondary btnLupa"
+              type="submit"
+              disabled={!searchProduct || searchProduct.trim() === ""}
+            >
               <img className="lupa-logo" src={lupa} alt="logo" />
             </button>
           </div>

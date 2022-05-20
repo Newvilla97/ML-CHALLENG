@@ -5,6 +5,7 @@ import shippingLogo from "../../img/ic_shipping.png";
 import { useProductDetails } from "../../context/ProductDetailsContext";
 const Product = ({ data }) => {
   const { setIdProduct } = useProductDetails();
+
   const history = useNavigate();
   return (
     <Fragment>
@@ -16,15 +17,15 @@ const Product = ({ data }) => {
           }}
           className="button-product"
         >
-          <img className="img-product" src={data.thumbnail} alt="logo" />
+          <img className="img-product" src={data.picture} alt="logo" />
         </button>
         <div className="description-product">
           <div className="price">
             {Intl.NumberFormat("es-AR", {
               style: "currency",
-              currency: data.prices.presentation.display_currency,
-            }).format(data.price)}
-            {data.shipping.free_shipping ? (
+              currency: data.price.currency,
+            }).format(data.price.amount)}
+            {data.freeShipping ? (
               <img className="shipping-logo" src={shippingLogo} alt="logo" />
             ) : null}
           </div>
@@ -41,7 +42,7 @@ const Product = ({ data }) => {
           </div>
         </div>
         <div className="breadcrumb-item active ubication-product">
-          {data.address.state_name}
+          {/*  {data.address.state_name} */}
         </div>
       </div>
     </Fragment>

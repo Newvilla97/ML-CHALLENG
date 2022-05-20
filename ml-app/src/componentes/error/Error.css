@@ -13,7 +13,10 @@
 .text-error{
     font-family: Arial;
     font-size: 25px;
-    font-weight:700
+    font-weight:700;
+    width: 100%;
+    max-width: 600px;
+    
 }
 .img-error{
     width: 100px;
