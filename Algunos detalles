@@ -1,0 +1,4 @@
+se intento hacer la interfaz lo mas parecida posible a las imagenes del challenge ya que no encontre forma de saber la tipografia de las letras
+o le tamaño exacto de los contenedores. Tambien queria aclarar que al buscar un producto por Id, estos no traian una descricpion. Es por eso que agregue un Lorem harcodeado
+para que pueda verse como se veria la descripcion de un producto. Aun asi prepare la api para que retorne el dato "description" pero con un string vacio harcodeado.
+Espero les guste mi trabajo, toda critica esa aceptada para poder seguir aprendiendo y creciendo profesionalmente!
